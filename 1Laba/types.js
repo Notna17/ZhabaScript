@@ -14,7 +14,7 @@ const sort = (list) => {
             case 'string': ++count.string;
                 break;
             case 'bigint': ++count.bigint;
-    }
+    } }
     return count
 }
 
