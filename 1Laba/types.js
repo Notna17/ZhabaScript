@@ -4,11 +4,16 @@ const sort = (list) => {
     let count = {number: 0, string: 0, boolean: 0, object: 0, bigint: 0}
     for (value of list) {
         let t = typeof value
-        if (t === "string") ++count.string
-        if (t === "number") ++count.number
-        if (t === "boolean") ++count.boolean
-        if (t === "object") ++count.object
-        if (t === "bigint") ++count.bigint
+        switch(t) {
+            case 'number': ++count.number;
+                break;
+            case 'boolean': ++count.boolean;
+                break;
+            case 'object': ++count.object;
+                break;
+            case 'string': ++count.string;
+                break;
+            case 'bigint': ++count.bigint;
     }
     return count
 }
