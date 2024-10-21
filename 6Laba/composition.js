@@ -3,19 +3,16 @@ const inc = (x) => {
     return ++x}
 const isOdd = (x) => (x % 2 === 1)
 const not = (x) => !x
-// по якійсь причині unite не працює без buffer, і я не розумію чого
 const unite = (...funcs) => {
     if (funcs.length === 0) {
         throw 'Expected at least 1 function'
     }
-    let answer
-    let buffer = (x => x)
-    for (const f of funcs) {
+    const answer = (x) => {
+        let g = x
+        for (const f of funcs) {
         if (typeof f !== 'function') {throw 'Expected input is function'}
-        answer = (x) => {
-            return f(buffer)
-        }
-        buffer = answer
+        g = f(g)}
+        return g
     }
     return answer
 }
