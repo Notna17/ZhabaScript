@@ -1,0 +1,7 @@
+{
+  "name": "webpage",
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "start": "node scr/index.js"
+  }
+}
