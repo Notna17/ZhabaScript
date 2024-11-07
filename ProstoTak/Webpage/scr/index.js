@@ -1,6 +1,6 @@
 const tbl = document.createElement("table")
 const tblBody = document.createElement("tbody")
-const headrer = document.getElementById("header")
+const header = document.getElementById("header")
 let array = [null, null, null, null, null, null, null, null, null]
 let xmove = true
 const end = (playerX) => {
@@ -33,7 +33,6 @@ const clicked = (id) =>  {
     }
 }
 const isWinner = () => {
-    let winner = null
     //чек діагоналей
     if ((array[0] === array[8] && array[0] === array[4] && array[0] !== null) || (array[2] === array[4] && array[6] === array[4] && array[2] !== null)) {
         end(array[4])
