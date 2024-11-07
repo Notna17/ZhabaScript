@@ -1,6 +1,6 @@
 const tbl = document.createElement("table")
 const tblBody = document.createElement("tbody")
-const headrer = document.getElementById("header")
+const header = document.getElementById("header")
 let array = [null, null, null, null, null, null, null, null, null]
 let xmove = true
 const end = (playerX) => {
