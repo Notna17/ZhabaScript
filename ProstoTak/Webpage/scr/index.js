@@ -1,8 +1,3 @@
-const tbl = document.createElement("table")
-const tblBody = document.createElement("tbody")
-const headrer = document.getElementById("header")
-let array = [null, null, null, null, null, null, null, null, null]
-let xmove = true
 const end = (playerX) => {
     for (let i = 0; i < 9; i++) {
         let el = document.getElementById(i.toString())
@@ -35,39 +30,49 @@ const clicked = (id) =>  {
 const isWinner = () => {
     let winner = null
     //чек діагоналей
-    if ((array[0] === array[8] && array[0] === array[4] && array[0] !== null) || (array[2] === array[4] && array[6] === array[4] && array[2] !== null)) {
+    if ((array[0] === array[8] && array[0] === array[4] && array[0] !== undefined) || (array[2] === array[4] && array[6] === array[4] && array[2] !== undefined)) {
         end(array[4])
         return
     }
     //чек колон і потім рядків
     for (let i = 0; i < 3; i++) {
-        if (array[i] === array[i+3] && array[i+6] === array[i] && array[i] !== null) {
+        if (array[i] === array[i+3] && array[i+6] === array[i] && array[i] !== undefined) {
             end(array[i])
             return
         }
-        if (array[i*3] === array[1+(i*3)] && array[2+(i*3)] === array[i*3] && array[i*3] !== null) {
+        if (array[i*3] === array[1+(i*3)] && array[2+(i*3)] === array[i*3] && array[i*3] !== undefined) {
             end(array[i*3])
             return
         }
     }
 }
+const header = document.getElementById("header")
+const table = document.getElementById("table")
+let array = new Array(9)
+let xmove = true
 for (let i = 0; i < 3; i++) {
-    const row = document.createElement("tr")
+    const row = document.createElement("div")
+    row.classList.add("row")
     for (let j = 0; j < 3; j++) {
-      let cell = document.createElement("td")
-      let button = document.createElement("button")
+      let button = document.createElement("div")
       let id = 3*i + j
-      button.style.width = "100px"
-      button.style.height = "100px"
-      button.style.fontSize = "80px"
+      button.classList.add("button")
       button.id = id.toString()
       button.onclick = clicked(id)
-      cell.appendChild(button);
-      row.appendChild(cell);
+      row.appendChild(button);
     }
-    tblBody.appendChild(row);
+    table.appendChild(row);
 }
 
-
-tbl.appendChild(tblBody);
-document.body.appendChild(tbl);
+const restart = document.getElementById("restart")
+const refresh = () => {
+    array = new Array(9)
+    xmove = true
+    header.innerHTML = "Гра у хрестики-нулики на двох!"
+    for (let i = 0; i < 9; i++) {
+        el = document.getElementById(i.toString())
+        el.innerHTML = " "
+        el.onclick = clicked(i)
+    }
+}
+restart.onclick = refresh
