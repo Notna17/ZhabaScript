@@ -1,0 +1,15 @@
+.main {
+    flex-direction: row;
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+}
+.zone {
+    flex-direction: column;
+    display: flex;
+    border-width: 200px;
+    border-color: black;
+    min-width: 400px;
+    width: 33%;
+    height: 100%;
+}
